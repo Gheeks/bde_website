@@ -14,18 +14,27 @@
 
         // Products
         $scope.products = []
-        Products.all()
-            .then(function(products)
-            {
-                products.forEach(function(product) { product.stock = 0 })
-                products.forEach(function(product) { product.new_stock = 0 })
+        loadProducts()
+        function loadProducts()
+        {
+            Products.all()
+                .then(function(products)
+                {
+                    products.forEach(function(product) { product.new_stock = 0 })
 
-                $scope.products = products
-            })
-            .catch(function()
-            {
-                alert("Erreur lors de la récupération des produits")
-            })
+                    $scope.products = products
+                })
+                .catch(function()
+                {
+                    alert("Erreur lors de la récupération des produits")
+                })
+        }
+
+        // Edit
+        $scope.edit = function()
+        {
+            alert('TODO : coder cette fonction :D')
+        }
     }])
 
 })();

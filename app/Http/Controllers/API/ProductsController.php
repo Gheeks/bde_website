@@ -20,6 +20,7 @@ class ProductsController extends Controller
                 'id' => $db_result['id'],
                 'name' => $db_result['name'],
                 'price' => $db_result['price'],
+                'stock' => 0
             ];
         }
 

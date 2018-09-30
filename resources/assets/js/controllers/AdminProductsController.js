@@ -14,15 +14,21 @@
 
         // Products
         $scope.products = []
-        Products.all()
-            .then(function(products)
-            {
-                $scope.products = products
-            })
-            .catch(function()
-            {
-                alert("Erreur lors de la récupération des produits")
-            })
+        loadProducts()
+        function loadProducts()
+        {
+            Products.all()
+                .then(function(products)
+                {
+                    products.forEach(function(product) { product.new_stock = 0 })
+
+                    $scope.products = products
+                })
+                .catch(function()
+                {
+                    alert("Erreur lors de la récupération des produits")
+                })
+        }
 
         // Add product
         $scope.addProduct_name = null
@@ -33,15 +39,7 @@
                 .then(function()
                 {
                     $('#addProduct').modal('hide')
-                    Products.all()
-                        .then(function(products)
-                        {
-                            $scope.products = products
-                        })
-                        .catch(function()
-                        {
-                            alert("Erreur lors de la récupération des produits")
-                        })
+                    loadProducts()
                 })
                 .catch(function()
                 {
@@ -83,15 +81,7 @@
                 .then(function()
                 {
                     $('#editProduct').modal('hide')
-                    Products.all()
-                        .then(function(products)
-                        {
-                            $scope.products = products
-                        })
-                        .catch(function()
-                        {
-                            alert("Erreur lors de la récupération des produits")
-                        })
+                    loadProducts()
                 })
                 .catch(function()
                 {
