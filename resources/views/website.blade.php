@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Angular</title>
+    <base href="/">
+    <link href="img/logo.png" rel="icon" type="image/png">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link href="css/style.min.css" rel="stylesheet">
+</head>
+<body ng-app="app" ng-controller="AppController">
+    <div ng-include="'views/app.html'"></div>
+    <script src="js/app.min.js"></script>
+</body>
+</html>
