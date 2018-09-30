@@ -15,7 +15,7 @@
     {
         $routeProvider
             .when('/home', {templateUrl : 'views/home.html', controller: 'HomeController'})
-            .when('/admin/products', {templateUrl : 'views/test.html', controller: 'AdminProductsController'})
+            .when('/admin/products', {templateUrl : 'views/admin_products.html', controller: 'AdminProductsController'})
             .when('/admin/inventory_manager', {templateUrl : 'views/test.html', controller: 'InventoryManagerController'})
             .when('/admin/users', {templateUrl : 'views/test.html', controller: 'UsersController'})
             .otherwise({redirectTo : '/home'})

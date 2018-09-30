@@ -11,6 +11,9 @@
     {
         // Current page
         $scope.$emit('setCurrentPage', 'InventoryManager')
+
+        // Products
+        $scope.products = []
     }])
 
 })();

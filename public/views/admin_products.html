@@ -1,0 +1,89 @@
+
+<div class="page-header">
+    <h1 class="page-title">Administration des produits</h1>
+    <p class="page-description">Pour ajouter/supprimer ou modifier le prix de vente d'un produit</p>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th style="width: 100px;">ID</th>
+            <th>Nom</th>
+            <th style="width: 180px;">Prix de vente</th>
+            <th style="width: 200px;">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="product in products">
+            <td>{{ product.id }}</td>
+            <td>{{ product.name }}</td>
+            <td>{{ product.price }} €</td>
+            <td>
+                <button type="button" class="btn btn-primary" ng-click="editProduct(product)">
+                    <i class="fas fa-edit"></i>
+                </button>
+                <button type="button" class="btn btn-danger" ng-click="removeProduct(product)">
+                    <i class="fas fa-trash"></i>
+                </button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addProduct">
+    Nouveau produit
+</button>
+
+<div class="modal fade" id="addProduct" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <form class="modal-content" ng-submit="addProductSubmit()">
+            <div class="modal-header">
+                <h5 class="modal-title">Nouveau produit</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="addProduct_name">Nom du produit</label>
+                    <input type="text" class="form-control" id="addProduct_name" placeholder="Nom du produit" ng-model="addProduct_name" required>
+                </div>
+                <div class="form-group">
+                    <label for="addProduct_price">Prix de vente</label>
+                    <input type="number" step=".01" class="form-control" id="addProduct_price" placeholder="Prix de vente du produit" ng-model="addProduct_price" min="0.01" required>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+                <button type="submit" class="btn btn-primary">Ajouter</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="modal fade" id="editProduct" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <form class="modal-content" ng-submit="editProductSubmit()">
+            <div class="modal-header">
+                <h5 class="modal-title">Modification d'un produit</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="editProduct_name">Nom du produit</label>
+                    <input type="text" class="form-control" id="editProduct_name" placeholder="Nom du produit" ng-model="editProduct_name" required>
+                </div>
+                <div class="form-group">
+                    <label for="editProduct_price">Prix de vente</label>
+                    <input type="number" step=".01" class="form-control" id="editProduct_price" placeholder="Prix de vente du produit" ng-model="editProduct_price" min="0.01" required>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+                <button type="submit" class="btn btn-primary">Modifier</button>
+            </div>
+        </form>
+    </div>
+</div>
