@@ -34,7 +34,12 @@
             <div class="home-details-total">
                 Total : {{ getTotal() }} €
             </div>
-            <button class="home-details-pay btn btn-success">Encaisser</button>
+            <div class="home-details-pay">
+                <button class="btn btn-success">Encaisser</button>
+            </div>
+            <div class="home-details-cancel">
+                <button class="btn btn-secondary btn-sm" ng-click="cancel()">Annuler</button>
+            </div>
         </div>
     </div>
 

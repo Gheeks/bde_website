@@ -68,6 +68,14 @@
 
             return total.toFixed(2)
         }
+
+        $scope.cancel = function()
+        {
+            $scope.products.forEach(function(product)
+            {
+                product.quantity = 0
+            })
+        }
     }])
 
 })();

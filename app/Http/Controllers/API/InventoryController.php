@@ -44,7 +44,7 @@ class InventoryController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'name' => 'required',
-            'description' => 'required',
+            'description' => '',
             'items' => 'required',
         ]);
 

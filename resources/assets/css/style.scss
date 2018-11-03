@@ -22,6 +22,8 @@
 .home-products
 {
     flex: 1;
+    height: calc(100vh - 56px);
+    overflow: auto;
 }
 
 .home-products-item
@@ -72,6 +74,7 @@
     width: 300px;
     height: calc(100vh - 56px);
     border-left: 1px solid #666;
+    overflow: auto;
 }
 
 .home-details-title
@@ -88,8 +91,14 @@
     font-size: 25px;
 }
 
-.home-details-pay
+.home-details-pay,
+.home-details-cancel
 {
     margin: 10px;
-    width: calc(100% - 20px);
+    text-align: center;
+}
+
+.home-details-pay button
+{
+    width: 100%;
 }
