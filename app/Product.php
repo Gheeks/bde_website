@@ -15,4 +15,17 @@ class Product extends Model
     {
         return $this->belongsToMany('App\StockEdit')->withPivot('quantity');
     }
+
+    public function getStock()
+    {
+        $stock = 0;
+
+        foreach ($this->stockEdits->all() as $stockEdit)
+            $stock += $stockEdit->pivot->quantity;
+
+        foreach ($this->purchases->all() as $purchase)
+            $stock -= $purchase->pivot->quantity;
+
+        return $stock;
+    }
 }

@@ -11,16 +11,16 @@ class ProductsController extends Controller
 {
     public function all()
     {
-        $db_results = Product::all();
+        $products = Product::all();
 
         $results = [];
-        foreach ($db_results as $db_result)
+        foreach ($products as $product)
         {
             $results[] = [
-                'id' => $db_result['id'],
-                'name' => $db_result['name'],
-                'price' => $db_result['price'],
-                'stock' => 0
+                'id' => $product->id,
+                'name' => $product->name,
+                'price' => $product->price,
+                'stock' => $product->getStock()
             ];
         }
 
