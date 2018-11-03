@@ -18,7 +18,6 @@ class CreateProductStockEditTable extends Migration
             $table->integer('product_id')->unsigned();
             $table->integer('stock_edit_id')->unsigned();
             $table->integer('quantity');
-            $table->timestamps();
 
             $table->foreign('product_id')->references('id')->on('products');
             $table->foreign('stock_edit_id')->references('id')->on('stock_edits');

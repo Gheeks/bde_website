@@ -18,7 +18,6 @@ class CreateProductPurchaseTable extends Migration
             $table->integer('product_id')->unsigned();
             $table->integer('purchase_id')->unsigned();
             $table->integer('quantity');
-            $table->timestamps();
 
             $table->foreign('product_id')->references('id')->on('products');
             $table->foreign('purchase_id')->references('id')->on('purchases');

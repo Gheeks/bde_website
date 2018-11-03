@@ -11,14 +11,14 @@
                 <li class="nav-item" ng-class="{'active': page=='Home'}">
                     <a class="nav-link" href="/home">Accueil</a>
                 </li>
-                <li class="nav-item" ng-class="{'active': page=='AdminProducts'}">
-                    <a class="nav-link" href="/admin/products">Administration produits</a>
-                </li>
-                <li class="nav-item" ng-class="{'active': page=='InventoryManager'}">
-                    <a class="nav-link" href="/admin/inventory_manager">Gestion des stocks</a>
-                </li>
-                <li class="nav-item" ng-class="{'active': page=='Users'}">
-                    <a class="nav-link" href="/admin/users">Utilisateurs</a>
+                <li class="nav-item dropdown" ng-class="{'active': page=='InventoryManager'||page=='Users'||page=='AdminProducts'}">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Administration</a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="/admin/inventory_manager" ng-class="{'active': page=='InventoryManager'}">Gestion des stocks</a>
+                        <a class="dropdown-item" href="/admin/users" ng-class="{'active': page=='Users'}">Utilisateurs</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="/admin/products" ng-class="{'active': page=='AdminProducts'}">Produits</a>
+                    </div>
                 </li>
             </ul>
         </div>
