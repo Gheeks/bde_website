@@ -10,6 +10,36 @@ use Illuminate\Http\Request;
 
 class InventoryController extends Controller
 {
+    public function all()
+    {
+        $stockEdits = StockEdit::all();
+
+        $results = [];
+        foreach ($stockEdits as $stockEdit)
+        {
+            $items = [];
+
+            foreach ($stockEdit->products as $product)
+            {
+                $items[] = [
+                    'id' => $product->id,
+                    'name' => $product->name,
+                    'quantity' => $product->pivot->quantity
+                ];
+            }
+
+            $results[] = [
+                'id' => $stockEdit->id,
+                'name' => $stockEdit->name,
+                'description' => $stockEdit->description,
+                'date' => $stockEdit->created_at->toDateTimeString(),
+                'products' => $items,
+            ];
+        }
+
+        return $results;
+    }
+
     public function edit(Request $request)
     {
         $validator = Validator::make($request->all(), [

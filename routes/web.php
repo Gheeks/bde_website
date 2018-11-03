@@ -17,6 +17,7 @@ Route::prefix('api')->namespace('API')->group(function()
     Route::post('/products/add', 'ProductsController@add');
     Route::post('/products/edit', 'ProductsController@edit');
 
+    Route::get('/inventory/all', 'InventoryController@all');
     Route::post('/inventory/edit', 'InventoryController@edit');
 
     Route::get('/', function ()
