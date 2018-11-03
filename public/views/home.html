@@ -1,12 +1,40 @@
 
-<div class="row">
+<div class="home-container">
 
-    <div class="col-2" ng-repeat="a in [1,2,3,4,5,6,7,8,9,10,11,12,13,14]">
-        <div class="card" style="margin: 10px">
-            <img class="card-img-top" src="https://placeimg.com/200/100/{{ a }}" alt="Card image cap">
-            <div class="card-body">
-                <h5 class="card-title" style="font-size: 14px; text-align: center;">Kinder Bueno White</h5>
+    <div class="home-products">
+
+        <h1>Catégorie</h1>
+
+        <div class="home-products-item" ng-repeat="product in products">
+            <div class="card" style="margin: 10px" ng-click="add(product)" ng-right-click="remove(product)">
+                <span class="card-badge badge badge-dark badge-primary" ng-show="product.quantity > 0">{{ product.quantity }}</span>
+                <img class="card-img-top" src="img/bueno.png" alt="{{ product.name }}">
+                <div class="card-body">
+                    <h5 class="home-products-item-title">{{ product.name }}</h5>
+                    <p class="home-products-item-stock" ng-style="{color: product.stock-product.quantity==0?'red':''}">En stock : {{ product.stock }}</p>
+                    <p class="home-products-item-price">{{ product.price }} €</p>
+                </div>
             </div>
+        </div>
+    </div>
+
+    <div class="home-details">
+        <h5 class="home-details-title">Récapitulatif</h5>
+
+        <div ng-show="isEmpty()">
+            <p class="font-italic text-center">Veuillez sélectionner des articles</p>
+        </div>
+
+        <div ng-hide="isEmpty()">
+            <ul>
+                <li ng-repeat="product in products" ng-show="product.quantity > 0">
+                    <b>{{ product.quantity }}</b>x {{ product.name }}
+                </li>
+            </ul>
+            <div class="home-details-total">
+                Total : {{ getTotal() }} €
+            </div>
+            <button class="home-details-pay btn btn-success">Encaisser</button>
         </div>
     </div>
 
