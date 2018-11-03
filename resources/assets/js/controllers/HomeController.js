@@ -8,7 +8,7 @@
     var app = angular.module('app')
 
 
-    app.controller('HomeController', ['$scope', 'Products', function($scope, Products)
+    app.controller('HomeController', ['$scope', 'Products', 'Purchases', function($scope, Products, Purchases)
     {
         // Current page
         $scope.$emit('setCurrentPage', 'Home')
@@ -76,6 +76,26 @@
                 product.quantity = 0
             })
         }
+
+        $scope.validate = function()
+        {
+            $('#validate').modal('show')
+        }
+
+        $scope.validateSubmit = function()
+        {
+            Purchases.purchase($scope.products)
+                .then(function()
+                {
+                    $('#validate').modal('hide')
+                    loadProducts()
+                })
+                .catch(function()
+                {
+                    alert("Erreur lors de la validation de l'achat")
+                })
+        }
+
     }])
 
 })();

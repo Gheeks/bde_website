@@ -20,6 +20,9 @@ Route::prefix('api')->namespace('API')->group(function()
     Route::get('/inventory/all', 'InventoryController@all');
     Route::post('/inventory/edit', 'InventoryController@edit');
 
+    Route::get('/purchases/all', 'PurchasesController@all');
+    Route::post('/purchases/purchase', 'PurchasesController@purchase');
+
     Route::get('/', function ()
     {
         abort(404);
