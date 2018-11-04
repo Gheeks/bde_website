@@ -64,7 +64,6 @@
         {
             return $q(function(resolve, reject)
             {
-                return reject()
                 // Request
                 $http({
                     method: 'POST',

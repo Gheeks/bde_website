@@ -11,7 +11,7 @@
     {
         this.success = function(message)
         {
-            var $alert = $('<div class="alert alert-success" role="alert"></div>')
+            var $alert = $('<div class="alert alert-dark" role="alert"></div>')
             $alert.text(message)
 
             var $notification = $('<div class="notifications-alert"></div>')
@@ -28,7 +28,7 @@
                     {
                         $notification.remove()
                     })
-                }, 2000)
+                }, 4000)
             })
         }
 

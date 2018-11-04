@@ -37,10 +37,25 @@
         // Edit
         $scope.edit = function()
         {
+            var ok = false
+            $scope.products.forEach(function(product)
+            {
+                if (product.delta_stock != 0)
+                    ok = true
+            })
+
+            if (!ok)
+            {
+                Notifications.error("Vous n'avez pas modifié le stock !")
+                return
+            }
+
             Inventory.edit($scope.name, $scope.description, $scope.products)
                 .then(function()
                 {
                     loadProducts()
+                    $scope.name = ''
+                    $scope.description = ''
                     Notifications.success("Stock modifié avec succès !")
                 })
                 .catch(function()
