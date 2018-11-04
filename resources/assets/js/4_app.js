@@ -18,6 +18,7 @@
             .when('/admin/products', {templateUrl : 'views/admin_products.html', controller: 'AdminProductsController'})
             .when('/admin/inventory_manager', {templateUrl : 'views/inventory_manager.html', controller: 'InventoryManagerController'})
             .when('/admin/inventory_manager/history', {templateUrl : 'views/inventory_manager_history.html', controller: 'InventoryManagerHistoryController'})
+            .when('/admin/purchases/history', {templateUrl : 'views/purchases_history.html', controller: 'PurchasesHistoryController'})
             .when('/admin/users', {templateUrl : 'views/users.html', controller: 'UsersController'})
             .otherwise({redirectTo : '/home'})
 

@@ -10,7 +10,7 @@
     app.controller('InventoryManagerHistoryController', ['$scope', 'Inventory', function($scope, Inventory)
     {
         // Current page
-        $scope.$emit('setCurrentPage', 'InventoryManager')
+        $scope.$emit('setCurrentPage', 'InventoryManagerHistory')
 
         // StockEdit
         $scope.stockEdits = []

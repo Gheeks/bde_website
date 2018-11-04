@@ -11,13 +11,16 @@
                 <li class="nav-item" ng-class="{'active': page=='Home'}">
                     <a class="nav-link" href="/home">Accueil</a>
                 </li>
-                <li class="nav-item dropdown" ng-class="{'active': page=='InventoryManager'||page=='Users'||page=='AdminProducts'}">
+                <li class="nav-item dropdown" ng-class="{'active': page=='InventoryManager'||page=='Users'||page=='AdminProducts'||page=='InventoryManagerHistory'||page=='PurchasesHistory'}">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Administration</a>
                     <div class="dropdown-menu">
                         <a class="dropdown-item" href="/admin/inventory_manager" ng-class="{'active': page=='InventoryManager'}">Gestion des stocks</a>
                         <a class="dropdown-item" href="/admin/users" ng-class="{'active': page=='Users'}">Utilisateurs</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="/admin/products" ng-class="{'active': page=='AdminProducts'}">Produits</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="/admin/inventory_manager/history" ng-class="{'active': page=='InventoryManagerHistory'}">Historique G. Stocks</a>
+                        <a class="dropdown-item" href="/admin/purchases/history" ng-class="{'active': page=='PurchasesHistory'}">Historique Comptoir</a>
                     </div>
                 </li>
             </ul>
