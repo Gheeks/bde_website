@@ -16,7 +16,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr ng-repeat="product in products">
+            <tr ng-repeat="product in products | orderBy:'name'">
                 <td>{{ product.id }}</td>
                 <td>{{ product.name }}</td>
                 <td>{{ product.price }} €</td>
@@ -54,6 +54,13 @@
                         <label for="addProduct_price">Prix de vente</label>
                         <input type="number" step=".01" class="form-control" id="addProduct_price" placeholder="Prix de vente du produit" ng-model="addProduct_price" min="0.01" required>
                     </div>
+                    <div class="form-group">
+                        <label for="addProduct_image">Image (230x150px)</label>
+                        <input type="file" class="form-control" id="addProduct_image" placeholder="Image de l'article" accept="image/*" onchange="angular.element(this).scope().uploadedFile(this)" required>
+                        <div class="text-center" style="margin: 10px;" ng-show="productImage">
+                            <img ng-src="{{ productImage }}" style="width:230px; height: 115px">
+                        </div>
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
@@ -80,6 +87,13 @@
                     <div class="form-group">
                         <label for="editProduct_price">Prix de vente</label>
                         <input type="number" step=".01" class="form-control" id="editProduct_price" placeholder="Prix de vente du produit" ng-model="editProduct_price" min="0.01" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="editProduct_image">Image (230x150px)</label>
+                        <input type="file" class="form-control" id="editProduct_image" placeholder="Image de l'article" accept="image/*" onchange="angular.element(this).scope().uploadedFile(this)" required>
+                        <div class="text-center" style="margin: 10px;" ng-show="productImage">
+                            <img ng-src="{{ productImage }}" style="width:230px; height: 115px">
+                        </div>
                     </div>
                 </div>
                 <div class="modal-footer">

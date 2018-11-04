@@ -7,6 +7,9 @@
 {
     var app = angular.module('app')
 
+    var IMAGE_WIDTH = 230
+    var IMAGE_HEIGHT = 115
+
     app.controller('AdminProductsController', ['$scope', 'Products', function($scope, Products)
     {
         // Current page
@@ -30,12 +33,15 @@
                 })
         }
 
+        // Add / Edit
+        $scope.productImage = null
+
         // Add product
         $scope.addProduct_name = null
         $scope.addProduct_price = null
         $scope.addProductSubmit = function()
         {
-            Products.add($scope.addProduct_name, $scope.addProduct_price)
+            Products.add($scope.addProduct_name, $scope.addProduct_price, $scope.productImage)
                 .then(function()
                 {
                     $('#addProduct').modal('hide')
@@ -55,6 +61,8 @@
             {
                 $scope.addProduct_name = ''
                 $scope.addProduct_price = ''
+                $scope.productImage = null
+                document.getElementById("addProduct_image").value = ''
             })
         })
 
@@ -72,12 +80,14 @@
             $scope.editProduct_id = product.id
             $scope.editProduct_name = product.name
             $scope.editProduct_price = parseFloat(product.price)
+            $scope.productImage = product.image
+            document.getElementById("editProduct_image").value = ''
             $('#editProduct').modal('show')
         }
 
         $scope.editProductSubmit = function()
         {
-            Products.edit($scope.editProduct_id, $scope.editProduct_name, $scope.editProduct_price)
+            Products.edit($scope.editProduct_id, $scope.editProduct_name, $scope.editProduct_price, $scope.productImage)
                 .then(function()
                 {
                     $('#editProduct').modal('hide')
@@ -101,6 +111,35 @@
         {
             alert('Fonction non implémentée : supprime un article si le stock = 0')
         }
+
+        $scope.uploadedFile = function(element)
+        {
+            var currentFile = element.files[0]
+
+            if (!currentFile)
+                return
+
+            var reader = new FileReader()
+            reader.onload = function(event)
+            {
+                var img = document.createElement("img")
+                img.src = event.target.result
+                img.onload = function()
+                {
+                    var canvas = document.createElement("canvas")
+                    canvas.width = IMAGE_WIDTH
+                    canvas.height = IMAGE_HEIGHT
+                    var ctx = canvas.getContext("2d")
+                    ctx.drawImage(img, 0, 0, IMAGE_WIDTH, IMAGE_HEIGHT)
+                    $scope.$apply(function()
+                    {
+                        $scope.productImage = canvas.toDataURL('image/png')
+                    })
+                }
+            }
+            reader.readAsDataURL(element.files[0])
+        }
+
     }])
 
 })();

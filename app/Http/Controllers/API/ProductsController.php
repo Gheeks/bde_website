@@ -19,6 +19,7 @@ class ProductsController extends Controller
             $results[] = [
                 'id' => $product->id,
                 'name' => $product->name,
+                'image' => $product->image,
                 'price' => $product->price,
                 'stock' => $product->getStock()
             ];
@@ -31,7 +32,8 @@ class ProductsController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'name' => 'required',
-            'price' => 'required|numeric'
+            'price' => 'required|numeric',
+            'image' => 'required'
         ]);
 
         if ($validator->fails())
@@ -40,6 +42,7 @@ class ProductsController extends Controller
         $product = new Product;
         $product->name = $request->get('name');
         $product->price = $request->get('price');
+        $product->image = $request->get('image');
 
         $product->save();
 
@@ -51,7 +54,8 @@ class ProductsController extends Controller
         $validator = Validator::make($request->all(), [
             'id' => 'required|numeric',
             'name' => 'required',
-            'price' => 'required|numeric'
+            'price' => 'required|numeric',
+            'image' => 'required'
         ]);
 
         if ($validator->fails())
@@ -60,6 +64,7 @@ class ProductsController extends Controller
         $product = Product::findOrFail($request->get('id'));
         $product->name = $request->get('name');
         $product->price = $request->get('price');
+        $product->image = $request->get('image');
 
         $product->save();
 

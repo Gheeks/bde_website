@@ -2,10 +2,10 @@
 <div class="home-container">
 
     <div class="home-products">
-        <div class="home-products-item" ng-repeat="product in products">
+        <div class="home-products-item" ng-repeat="product in products | orderBy:'name'">
             <div class="card" style="margin: 10px" ng-click="add(product)" ng-right-click="remove(product)">
                 <span class="card-badge badge badge-dark badge-primary" ng-show="product.quantity > 0">{{ product.quantity }}</span>
-                <img class="card-img-top" src="img/bueno.png" alt="{{ product.name }}">
+                <img class="card-img-top" ng-src="{{ product.image }}" alt="{{ product.name }}">
                 <div class="card-body">
                     <h5 class="home-products-item-title">{{ product.name }}</h5>
                     <p class="home-products-item-stock" ng-style="{color: product.stock-product.quantity==0?'red':''}">En stock : {{ product.stock }}</p>

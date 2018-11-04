@@ -31,7 +31,7 @@
         }
 
         // Ajoute un nouvel article
-        this.add = function(name, price)
+        this.add = function(name, price, image)
         {
             return $q(function(resolve, reject)
             {
@@ -45,6 +45,7 @@
                     data: $httpParamSerializer({
                         name: name,
                         price: price,
+                        image: image
                     })
                 })
                     .then(function(response)
@@ -59,10 +60,11 @@
         }
 
         // Modifier un article existant
-        this.edit = function(id, name, price)
+        this.edit = function(id, name, price, image)
         {
             return $q(function(resolve, reject)
             {
+                return reject()
                 // Request
                 $http({
                     method: 'POST',
@@ -74,6 +76,7 @@
                         id: id,
                         name: name,
                         price: price,
+                        image: image
                     })
                 })
                     .then(function(response)
