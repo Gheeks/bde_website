@@ -10,7 +10,7 @@
     var IMAGE_WIDTH = 230
     var IMAGE_HEIGHT = 115
 
-    app.controller('AdminProductsController', ['$scope', 'Products', function($scope, Products)
+    app.controller('AdminProductsController', ['$scope', 'Notifications', 'Products', function($scope, Notifications, Products)
     {
         // Current page
         $scope.$emit('setCurrentPage', 'AdminProducts')
@@ -29,7 +29,7 @@
                 })
                 .catch(function()
                 {
-                    alert("Erreur lors de la récupération des produits")
+                    Notifications.error("Erreur lors de la récupération des produits")
                 })
         }
 
@@ -46,10 +46,11 @@
                 {
                     $('#addProduct').modal('hide')
                     loadProducts()
+                    Notifications.success("Produit créé avec succès")
                 })
                 .catch(function()
                 {
-                    alert("Erreur lors de la création de l'article")
+                    Notifications.error("Erreur lors de la création de l'article")
                 })
 
             return false
@@ -92,10 +93,11 @@
                 {
                     $('#editProduct').modal('hide')
                     loadProducts()
+                    Notifications.success("Produit modifié avec succès")
                 })
                 .catch(function()
                 {
-                    alert("Erreur lors de la modification de l'article")
+                    Notifications.error("Erreur lors de la modification de l'article")
                 })
 
             return false
@@ -109,7 +111,7 @@
         // Remove product
         $scope.removeProduct = function()
         {
-            alert('Fonction non implémentée : supprime un article si le stock = 0')
+            Notifications.error("Fonction non implémentée")
         }
 
         $scope.uploadedFile = function(element)

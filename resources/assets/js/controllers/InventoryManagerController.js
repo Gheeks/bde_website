@@ -7,7 +7,7 @@
 {
     var app = angular.module('app')
 
-    app.controller('InventoryManagerController', ['$scope', 'Products', 'Inventory', function($scope, Products, Inventory)
+    app.controller('InventoryManagerController', ['$scope', 'Notifications', 'Products', 'Inventory', function($scope, Notifications, Products, Inventory)
     {
         // Current page
         $scope.$emit('setCurrentPage', 'InventoryManager')
@@ -30,7 +30,7 @@
                 })
                 .catch(function()
                 {
-                    alert("Erreur lors de la récupération des produits")
+                    Notifications.error("Erreur lors de la récupération des produits")
                 })
         }
 
@@ -41,10 +41,11 @@
                 .then(function()
                 {
                     loadProducts()
+                    Notifications.success("Stock modifié avec succès !")
                 })
                 .catch(function()
                 {
-                    alert("Erreur lors de la modification du stock")
+                    Notifications.error("Erreur lors de la modification du stock")
                 })
 
             return false

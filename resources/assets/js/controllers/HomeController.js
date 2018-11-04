@@ -8,7 +8,7 @@
     var app = angular.module('app')
 
 
-    app.controller('HomeController', ['$scope', 'Products', 'Purchases', function($scope, Products, Purchases)
+    app.controller('HomeController', ['$scope', 'Notifications', 'Products', 'Purchases', function($scope, Notifications, Products, Purchases)
     {
         // Current page
         $scope.$emit('setCurrentPage', 'Home')
@@ -27,7 +27,7 @@
                 })
                 .catch(function()
                 {
-                    alert("Erreur lors de la récupération des produits")
+                    Notifications.error("Erreur lors de la récupération des produits")
                 })
         }
 
@@ -89,10 +89,11 @@
                 {
                     $('#validate').modal('hide')
                     loadProducts()
+                    Notifications.success("Encaissement enregistré !")
                 })
                 .catch(function()
                 {
-                    alert("Erreur lors de la validation de l'achat")
+                    Notifications.error("Erreur lors de la validation de l'achat")
                 })
         }
 

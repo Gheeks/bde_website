@@ -7,7 +7,7 @@
 {
     var app = angular.module('app')
 
-    app.controller('PurchasesHistoryController', ['$scope', 'Purchases', function($scope, Purchases)
+    app.controller('PurchasesHistoryController', ['$scope', 'Notifications', 'Purchases', function($scope, Notifications, Purchases)
     {
         // Current page
         $scope.$emit('setCurrentPage', 'PurchasesHistory')
@@ -22,7 +22,7 @@
             })
             .catch(function()
             {
-                alert("Erreur lors de la récupération des données")
+                Notifications.error("Erreur lors de la récupération des données")
             })
     }])
 

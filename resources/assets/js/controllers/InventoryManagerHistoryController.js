@@ -7,7 +7,7 @@
 {
     var app = angular.module('app')
 
-    app.controller('InventoryManagerHistoryController', ['$scope', 'Inventory', function($scope, Inventory)
+    app.controller('InventoryManagerHistoryController', ['$scope', 'Notifications', 'Inventory', function($scope, Notifications, Inventory)
     {
         // Current page
         $scope.$emit('setCurrentPage', 'InventoryManagerHistory')
@@ -22,7 +22,7 @@
             })
             .catch(function()
             {
-                alert("Erreur lors de la récupération des données")
+                Notifications.error("Erreur lors de la récupération des données")
             })
     }])
 

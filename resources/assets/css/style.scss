@@ -102,3 +102,17 @@
 {
     width: 100%;
 }
+
+.notifications
+{
+    position: absolute;
+    bottom: 0;
+    margin: 10px;
+}
+
+.notifications-alert .alert
+{
+    display: inline-block;
+}
+
+
