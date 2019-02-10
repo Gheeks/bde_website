@@ -6,10 +6,11 @@ use Validator;
 use App\Http\Controllers\Controller;
 use App\Product;
 use Illuminate\Http\Request;
-
+use Carbon\Carbon;
 
 class ProductsController extends Controller
 {
+  
     public function all()
     {
         $products = Product::all();
@@ -36,7 +37,9 @@ class ProductsController extends Controller
         $validator = Validator::make($request->all(), [
             'name' => 'required',
             'price' => 'required|numeric',
-            'image' => 'required'
+            'image' => 'required',
+            'expired_at' => 'required',
+            'quantity_min' => 'required|numeric'
         ]);
 
         if ($validator->fails())
@@ -46,6 +49,8 @@ class ProductsController extends Controller
         $product->name = $request->get('name');
         $product->price = $request->get('price');
         $product->image = $request->get('image');
+        $product->expired_at = Carbon::parse($request->get('expired_at'));
+        $product->quantity_min = $request->get('quantity_min');
 
         $product->save();
 
@@ -58,7 +63,9 @@ class ProductsController extends Controller
             'id' => 'required|numeric',
             'name' => 'required',
             'price' => 'required|numeric',
-            'image' => 'required'
+            'image' => 'required',
+            'expired_at' => 'required',
+            'quantity_min' => 'required|numeric'
         ]);
 
         if ($validator->fails())
@@ -68,7 +75,8 @@ class ProductsController extends Controller
         $product->name = $request->get('name');
         $product->price = $request->get('price');
         $product->image = $request->get('image');
-
+        $product->expired_at = Carbon::parse($request->get('expired_at'));
+        $product->quantity_min = $request->get('quantity_min');
         $product->save();
 
         return ['success' => true];
