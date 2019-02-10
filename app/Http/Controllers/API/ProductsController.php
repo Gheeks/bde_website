@@ -22,7 +22,9 @@ class ProductsController extends Controller
                 'name' => $product->name,
                 'image' => $product->image,
                 'price' => $product->price,
-                'stock' => $product->getStock()
+                'stock' => $product->getStock(),
+                'quantity_min' => $product->quantity_min,
+                'expired_at' => $product->expired_at
             ];
         }
 

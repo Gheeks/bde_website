@@ -55,6 +55,14 @@
                         <input type="number" step=".01" class="form-control" id="addProduct_price" placeholder="Prix de vente du produit" ng-model="addProduct_price" min="0.01" required>
                     </div>
                     <div class="form-group">
+                        <label for="addProduct_expired_at">Date de péremption</label>
+                        <input type="date" class="form-control" value="{{addProduct_expired_at_value}}" id="addProduct_expired_at" ng-model="addProduct_expired_at" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="addProduct_quantity_min">Quantitée minimum en stock</label>
+                        <input type="number" step="1" class="form-control" id="addProduct_quantity_min" placeholder="Seuil minimum" ng-model="addProduct_quantity_min" required>
+                    </div>
+                    <div class="form-group">
                         <label for="addProduct_image">Image (230x150px)</label>
                         <input type="file" class="form-control" id="addProduct_image" placeholder="Image de l'article" accept="image/*" onchange="angular.element(this).scope().uploadedFile(this)" required>
                         <div class="text-center" style="margin: 10px;" ng-show="productImage">
@@ -87,6 +95,14 @@
                     <div class="form-group">
                         <label for="editProduct_price">Prix de vente</label>
                         <input type="number" step=".01" class="form-control" id="editProduct_price" placeholder="Prix de vente du produit" ng-model="editProduct_price" min="0.01" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="editProduct_expired_at">Date de péremption la plus proche</label>
+                        <input type="date" class="form-control" value="{{editProduct_expired_at_value}}" id="editProduct_expired_at" ng-model="editProduct_expired_at" pattern="yyyy-MM-dd" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="editProduct_quantity_min">Quantitée minimum en stock</label>
+                        <input type="number" step="1" class="form-control" id="editProduct_quantity_min" placeholder="Quantitée en dessous de laquelle il y aura une alerte" ng-model="editProduct_quantity_min" min="1" required>
                     </div>
                     <div class="form-group">
                         <label for="editProduct_image">Image (230x150px)</label>
