@@ -8,8 +8,10 @@
                 <img class="card-img-top" ng-src="{{ product.image }}" alt="{{ product.name }}">
                 <div class="card-body">
                     <h5 class="home-products-item-title">{{ product.name }}</h5>
-                    <p class="home-products-item-stock" ng-style="{color: product.stock-product.quantity==0?'red':''}">En stock : {{ product.stock }}</p>
+                    <p class="home-products-item-stock" ng-style="{color: product.stock-product.quantity < product.quantity_min ?'red':''}">En stock : {{ product.stock }}</p>
+                    <p class="home-products-item-stock" ng-style="{color: dt(product) - datenow < 0?'red':''}">Périme le: {{ product.expired_at }}</p>
                     <p class="home-products-item-price">{{ product.price }} €</p>
+                   
                 </div>
             </div>
         </div>
