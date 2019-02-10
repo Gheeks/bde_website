@@ -103,5 +103,28 @@
             </form>
         </div>
     </div>
-
+    <div class="modal fade" id="removeProduct" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <form class="modal-content" ng-submit="removeProductSubmit()">
+                <div class="modal-header">
+                    <h5 class="modal-title">Supression d'un produit</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="editProduct_image">Image (230x150px)</label>
+                        <div class="text-center" style="margin: 10px;" ng-show="productImage">
+                            <img ng-src="{{ productImage }}" style="width:230px; height: 115px">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+                    <button type="submit" class="btn btn-primary">Supprimer</button>
+                </div>
+            </form>
+        </div>
+    </div>
 </div>

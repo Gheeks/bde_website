@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Product;
 use Illuminate\Http\Request;
 
+
 class ProductsController extends Controller
 {
     public function all()
@@ -68,6 +69,20 @@ class ProductsController extends Controller
 
         $product->save();
 
+        return ['success' => true];
+    }
+
+    public function remove(Request $request){
+        $validator = Validator::make($request->all(), [
+            'id' => 'required|numeric'
+        ]);
+        if($validator->fails())
+            return response(['success' => false, 'errors' => $validator->errors()], 500);
+
+        $product = Product::findOrFail($request->get('id'));
+
+        $product->delete();
+        
         return ['success' => true];
     }
 }
