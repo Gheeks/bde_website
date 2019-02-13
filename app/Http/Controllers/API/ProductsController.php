@@ -25,7 +25,8 @@ class ProductsController extends Controller
                 'price' => $product->price,
                 'stock' => $product->getStock(),
                 'quantity_min' => $product->quantity_min,
-                'expired_at' => $product->expired_at
+                'expired_at' => $product->expired_at,
+                'category' => $product->category
             ];
         }
 

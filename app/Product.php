@@ -9,6 +9,10 @@ class Product extends Model
 {
     use SoftDeletes;
 
+    public function category(){
+        return $this->belongsTo('App\Category');
+    }
+
     public function purchases()
     {
         return $this->belongsToMany('App\Purchase')->withPivot('quantity');
@@ -18,6 +22,7 @@ class Product extends Model
     {
         return $this->belongsToMany('App\StockEdit')->withPivot('quantity');
     }
+
 
     public function getStock()
     {
