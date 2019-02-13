@@ -13,10 +13,11 @@ var plumber = require('gulp-plumber');
 gulp.task('default', function ()
 {
     // Javascript
-    gulp.watch('resources/assets/js/**/*.js', ['js']);
+    gulp.watch('resources/assets/js/**/*.js', gulp.series('js'));
 
     // CSS / SCSS
-    gulp.watch(['resources/assets/css/**/*.css', 'resources/assets/css/**/*.scss'], ['css']);
+    gulp.watch('resources/assets/css/**/*.css', gulp.series('css'));
+    gulp.watch('resources/assets/css/**/*.scss', gulp.series('css'));
 });
 
 /**

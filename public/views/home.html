@@ -2,19 +2,22 @@
 <div class="home-container">
 
     <div class="home-products">
-        <div class="home-products-item" ng-repeat="product in products | orderBy:'name'">
-            <div class="card" style="margin: 10px" ng-click="add(product)" ng-right-click="remove(product)">
-                <span class="card-badge badge badge-dark badge-primary" ng-show="product.quantity > 0">{{ product.quantity }}</span>
-                <img class="card-img-top" ng-src="{{ product.image }}" alt="{{ product.name }}">
-                <div class="card-body">
-                    <h5 class="home-products-item-title">{{ product.name }}</h5>
-                    <p class="home-products-item-stock" ng-style="{color: product.stock-product.quantity < product.quantity_min ?'red':''}">En stock : {{ product.stock }}</p>
-                    <p class="home-products-item-stock" ng-style="{color: dt(product) - datenow < 0?'red':''}">{{ isExpired(product) ? "Périmé depuis le" : "Périme le " }} {{ productExpiredAt(product) }}</p>
-                    <p class="home-products-item-price">{{ product.price }} €</p>
-                   
+        <div class="home-category-item" ng-repeat="cat in categories | orderBy: '-nom'">
+            <p class="home-category-name">• {{cat.nom}} •</p>
+            <div class="home-products-item" ng-repeat="product in products | categoryFilter:cat | orderBy : 'name'" >
+                <div class="card" style="margin: 10px" ng-click="add(product)" ng-right-click="remove(product)">
+                    <span class="card-badge badge badge-dark badge-primary" ng-show="product.quantity > 0">{{ product.quantity }}</span>
+                    <img class="card-img-top" ng-src="{{ product.image }}" alt="{{ product.name }}">
+                    <div class="card-body">
+                        <h5 class="home-products-item-title">{{ product.name }}</h5>
+                        <p class="home-products-item-stock" ng-style="{color: product.stock-product.quantity < product.quantity_min ?'red':''}">En stock : {{ product.stock }}</p>
+                        <p class="home-products-item-stock" ng-style="{color: dt(product) - datenow < 0?'red':''}">{{ isExpired(product) ? "Périmé depuis le" : "Périme le " }} {{ productExpiredAt(product) }}</p>
+                        <p class="home-products-item-price">{{ product.price }} €</p>
+                    </div>
                 </div>
             </div>
         </div>
+      
     </div>
 
     <div class="home-details">

@@ -25,6 +25,7 @@ Route::prefix('api')->namespace('API')->group(function()
     Route::post('/purchases/purchase', 'PurchasesController@purchase');
 
     Route::get('/categories/all', 'CategoriesController@all');
+    Route::get('/categories/allNotEmpty', 'CategoriesController@allNotEmpty');
 
     Route::get('/', function ()
     {

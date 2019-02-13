@@ -14,9 +14,21 @@
 
 }
 
+
 .home-container
 {
     display: flex;
+}
+
+.home-category-name
+{
+  
+    font-weight: bold;
+    padding-top: 10px;
+    margin-bottom: 5px;
+    padding-left: 20px;
+    font-size: 18px;
+
 }
 
 .home-products
