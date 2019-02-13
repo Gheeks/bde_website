@@ -85,6 +85,11 @@ class ProductsController extends Controller
         $product->image = $request->get('image');
         $product->expired_at = Carbon::parse($request->get('expired_at'));
         $product->quantity_min = $request->get('quantity_min');
+
+        $category = Category::find($request->get('category_id'));
+
+        $product->category()->associate($category);
+
         $product->save();
 
         return ['success' => true];

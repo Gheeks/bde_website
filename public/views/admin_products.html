@@ -55,6 +55,7 @@
                     <div class="form-group">
                         <label for="addProduct_category">Catégorie du produit</label>
                         <select class="form-control" name="addProduct_category" id="addProduct_category" ng-model="selectedCategory" required>
+                            <option style="display:none" value="">Sélectionnez une catégorie</option>
                             <option ng-repeat="category in categories" value="{{category.id}}">{{category.nom}}</option>
                         </select>
                     </div>
@@ -99,6 +100,13 @@
                     <div class="form-group">
                         <label for="editProduct_name">Nom du produit</label>
                         <input type="text" class="form-control" id="editProduct_name" placeholder="Nom du produit" ng-model="editProduct_name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="editProduct_category">Catégorie du produit</label>
+                        <select class="form-control" name="editProduct_category" id="editProduct_category" ng-model="editProduct_selectedCategory" required>
+                            <option style="display:none" value="">Sélectionnez une catégorie</option>
+                            <option ng-repeat="category in categories" value="{{category.id}}">{{category.nom}}</option>
+                        </select>
                     </div>
                     <div class="form-group">
                         <label for="editProduct_price">Prix de vente</label>
