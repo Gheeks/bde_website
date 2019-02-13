@@ -10,6 +10,7 @@
         <thead>
             <tr>
                 <th style="width: 100px;">ID</th>
+                <th>Catégorie</th>
                 <th>Nom</th>
                 <th style="width: 180px;">Prix de vente</th>
                 <th style="width: 200px;">Actions</th>
@@ -18,6 +19,7 @@
         <tbody>
             <tr ng-repeat="product in products | orderBy:'name'">
                 <td>{{ product.id }}</td>
+                <td>{{ product.category.nom == null ? "Aucune" : product.category.nom }}</td>
                 <td>{{ product.name }}</td>
                 <td>{{ product.price }} €</td>
                 <td>
@@ -49,6 +51,12 @@
                     <div class="form-group">
                         <label for="addProduct_name">Nom du produit</label>
                         <input type="text" class="form-control" id="addProduct_name" placeholder="Nom du produit" ng-model="addProduct_name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="addProduct_category">Catégorie du produit</label>
+                        <select class="form-control" name="addProduct_category" id="addProduct_category" ng-model="selectedCategory" required>
+                            <option ng-repeat="category in categories" value="{{category.id}}">{{category.nom}}</option>
+                        </select>
                     </div>
                     <div class="form-group">
                         <label for="addProduct_price">Prix de vente</label>

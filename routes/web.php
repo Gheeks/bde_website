@@ -17,12 +17,14 @@ Route::prefix('api')->namespace('API')->group(function()
     Route::post('/products/add', 'ProductsController@add');
     Route::post('/products/edit', 'ProductsController@edit');
     Route::post('/products/remove', 'ProductsController@remove');
-    
+
     Route::get('/inventory/all', 'InventoryController@all');
     Route::post('/inventory/edit', 'InventoryController@edit');
 
     Route::get('/purchases/all', 'PurchasesController@all');
     Route::post('/purchases/purchase', 'PurchasesController@purchase');
+
+    Route::get('/categories/all', 'CategoriesController@all');
 
     Route::get('/', function ()
     {

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API;
 use Validator;
 use App\Http\Controllers\Controller;
 use App\Product;
+use App\Category;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 
@@ -40,7 +41,8 @@ class ProductsController extends Controller
             'price' => 'required|numeric',
             'image' => 'required',
             'expired_at' => 'required',
-            'quantity_min' => 'required|numeric'
+            'quantity_min' => 'required|numeric',
+            'category_id' => 'required|numeric'
         ]);
 
         if ($validator->fails())
@@ -52,6 +54,10 @@ class ProductsController extends Controller
         $product->image = $request->get('image');
         $product->expired_at = Carbon::parse($request->get('expired_at'));
         $product->quantity_min = $request->get('quantity_min');
+
+        $category = Category::find($request->get('category_id'));
+
+        $product->category()->associate($category);
 
         $product->save();
 
@@ -66,7 +72,8 @@ class ProductsController extends Controller
             'price' => 'required|numeric',
             'image' => 'required',
             'expired_at' => 'required',
-            'quantity_min' => 'required|numeric'
+            'quantity_min' => 'required|numeric',
+            'category_id' => 'required|numeric'
         ]);
 
         if ($validator->fails())
