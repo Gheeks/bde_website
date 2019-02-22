@@ -27,6 +27,15 @@ Route::prefix('api')->namespace('API')->group(function()
     Route::get('/categories/all', 'CategoriesController@all');
     Route::get('/categories/allNotEmpty', 'CategoriesController@allNotEmpty');
 
+    Route::get('/users/all', 'UsersController@all');
+    Route::get('/users/scan', 'UsersController@scan');
+
+    Route::get('/users/test', function(){
+        $ls = [];
+        exec('ls', $ls);
+        return $ls;
+    });
+
     Route::get('/', function ()
     {
         abort(404);
