@@ -32,7 +32,7 @@ Route::prefix('api')->namespace('API')->group(function()
 
     Route::get('/users/test', function(){
         $ls = [];
-        exec('ls', $ls);
+        exec('python ../RFID/lecture.py', $ls);
         return $ls;
     });
 
