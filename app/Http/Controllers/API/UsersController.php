@@ -55,7 +55,8 @@ class UsersController extends Controller{
         if($validator->fails())
             return response(['success' => false, 'errors' => $validator->errors()], 500);
 
-        $user = User::findOrFail($request->get('user')['id']);
+	$uDecode = json_decode($request->get('user'), true);
+        $user = User::findOrFail($uDecode['id']);
         $amount = $request->get('amount');
         $card = $user->card;
 
