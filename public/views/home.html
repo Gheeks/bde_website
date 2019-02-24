@@ -37,6 +37,8 @@
                 Total : {{ getTotal() }} €
             </div>
             <div class="home-details-pay">
+                <input type="radio" name="validateType" id="validateCard" value="card"> Carte <br/>
+                <input type="radio" name="validateType" id="validateMoney" value="money" checked> Espèce <br/>
                 <button class="btn btn-success" ng-click="validate()">Encaisser</button>
             </div>
             <div class="home-details-cancel">
@@ -67,6 +69,49 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
                 <button type="submit" class="btn btn-primary">Valider</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="modal fade" id="scanCardModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <form class="modal-content" ng-submit="validateSubmit()">
+            <div class="modal-header">
+                <h5 class="modal-title">Encaisser (par carte)</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <h2>Scannez la carte... </h2>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="modal fade" id="scannedCardModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <form class="modal-content" ng-submit="validateCardSubmit()">
+            <div class="modal-header">
+                <h5 class="modal-title">Paiement par carte ()</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <h2>Scan réussi ({{card.id}}) </h2>
+                <ul>
+                    <li ng-repeat="product in products" ng-show="product.quantity > 0">
+                        <b>{{ product.quantity }}</b>x {{ product.name }}
+                    </li>
+                </ul>
+                <strong>Total : {{ getTotal() }} €</strong>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary">Valider</button>            
             </div>
         </form>
     </div>
