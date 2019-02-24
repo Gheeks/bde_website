@@ -8,7 +8,31 @@
         <br/>
         <button class="btn btn-primary" ng-click="launchScan()">Lancer le scan</button>
 
-        <p>{{ scannedUser.id }}</p>
+        <div ng-hide="isScanned()" class="user-detail">
+            <p>Carte : {{ scannedUser.id_string }}</p>
+            <p>Id : {{scannedUser.id}}</p>
+            <p>Nom : {{scannedUser.name}}</p>
+            <p>Mail : {{scannedUser.email}}</p>
+            <p>Coin : {{scannedUser.coin}} €</p>
+        </div>
     </div>
+</div>
 
+<div class="modal fade" id="scanCardModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <form class="modal-content" ng-submit="validateSubmit()">
+            <div class="modal-header">
+                <h5 class="modal-title">Encaisser (par carte)</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <h2>Scannez la carte... </h2>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+            </div>
+        </form>
+    </div>
 </div>

@@ -60,8 +60,8 @@ class PurchasesController extends Controller
         if($card->coin < $totalPrice)
             return response(['success' => false, 'errors' => 'Pas assez de coin sur la carte. Actuellement sur la carte : ' . strval($card->coin)]);
 
-	$card->coin -= $totalPrice;
-	$card->save();
+	    $card->coin -= $totalPrice;
+	    $card->save();
         return $this->purchase($request);  
 
     }
