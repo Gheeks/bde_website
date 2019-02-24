@@ -38,11 +38,31 @@ class UsersController extends Controller{
         $user = $card->user;
         $output = [
             'id' => $user->id,
+            'card_id_string' => $card->id_string,
             'name' => $user->name,
             'email' => $user->email,
             'coin' => $card->coin ?? 0
         ];
         return $output;
+    }
+
+    public function addCoin(Request $request){
+        $validator = Validator::make($request->all(), [
+            'amount' => 'required',
+            'user' => 'required'
+        ]);
+
+        if($validator->fails())
+            return response(['success' => false, 'errors' => $validator->errors()], 500);
+
+        $user = User::findOrFail($request->get('user')['id']);
+        $amount = $request->get('amount');
+        $card = $user->card;
+
+        $card->coin += $amount;
+        $card->save();
+
+        return ['success' => true];
     }
 
 
