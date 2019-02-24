@@ -9,11 +9,12 @@
         <button class="btn btn-primary" ng-click="launchScan()">Lancer le scan</button>
 
         <div ng-hide="isScanned()" class="user-detail">
-            <p>Carte : {{ scannedUser.id_string }}</p>
+            <p>Carte : {{ scannedUser.card_id_string }}</p>
             <p>Id : {{scannedUser.id}}</p>
             <p>Nom : {{scannedUser.name}}</p>
             <p>Mail : {{scannedUser.email}}</p>
             <p>Coin : {{scannedUser.coin}} €</p>
+            <button type="button" class="btn btn-primary" ng-click="showModalCoin()">Ajouter des coin</button>
         </div>
     </div>
 </div>
@@ -31,6 +32,27 @@
                 <h2>Scannez la carte... </h2>
             </div>
             <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="modal fade" id="addCoinModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <form class="modal-content" ng-submit="addCoin()">
+            <div class="modal-header">
+                <h5 class="modal-title">Ajouter des coin à {{scannedUser.name}}</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <label for="amount">Montant à créditer :</label>
+                <input type="number" name="amount" min="0.10" value="1.00" step=".10" ng-model="amount">
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary">Valider</button>            
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
             </div>
         </form>

@@ -30,6 +30,7 @@ Route::prefix('api')->namespace('API')->group(function()
 
     Route::get('/users/all', 'UsersController@all');
     Route::get('/users/scan', 'UsersController@scan');
+    Route::post('/users/addCoin', 'UsersController@addCoin');
 
     Route::get('/users/test', function(){
         $ls = [];
