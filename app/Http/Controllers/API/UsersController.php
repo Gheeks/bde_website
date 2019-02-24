@@ -34,7 +34,7 @@ class UsersController extends Controller{
         
         $card = Card::where('id_string', '=', $result)->firstOrFail();
         
-        Log::warning($card->id);
+        
         $user = $card->user;
         $output = [
             'id' => $user->id,
