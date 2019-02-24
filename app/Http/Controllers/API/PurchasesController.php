@@ -6,6 +6,7 @@ use Validator;
 use App\Http\Controllers\Controller;
 use App\Product;
 use App\Purchase;
+use App\Card;
 use Illuminate\Http\Request;
 
 class PurchasesController extends Controller
@@ -41,6 +42,28 @@ class PurchasesController extends Controller
         return $results;
     }
 
+    public function purchaseCard(Request $request){
+        $validator = Validator::make($request->all(), [
+            'card' => 'required',
+            'totalPrice' => 'required',
+        ]);
+
+        if($validator->fails())
+            return response(['success' => false, 'errors' => $validator->errors()], 500);
+
+        $cardString = $request->get('card');
+        $totalPrice = $request->get('totalPrice');
+        $cardDecode = json_decode($cardString);
+
+        $card = Card::findOrFail($cardDecode->id);
+
+        if($card->coin < $totalPrice)
+            return response(['success' => false, 'errors' => 'Pas assez de coin sur la carte.']);
+
+
+        return purchase($request);
+
+    }
     public function purchase(Request $request)
     {
         $validator = Validator::make($request->all(), [

@@ -23,6 +23,7 @@ Route::prefix('api')->namespace('API')->group(function()
 
     Route::get('/purchases/all', 'PurchasesController@all');
     Route::post('/purchases/purchase', 'PurchasesController@purchase');
+    Route::post('/purchases/purchaseCard', 'PurchasesController@purchaseCard');
 
     Route::get('/categories/all', 'CategoriesController@all');
     Route::get('/categories/allNotEmpty', 'CategoriesController@allNotEmpty');
