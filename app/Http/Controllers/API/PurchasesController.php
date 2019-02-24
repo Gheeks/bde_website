@@ -58,10 +58,10 @@ class PurchasesController extends Controller
         $card = Card::findOrFail($cardDecode->id);
 
         if($card->coin < $totalPrice)
-            return response(['success' => false, 'errors' => 'Pas assez de coin sur la carte.']);
+            return response(['success' => false, 'errors' => 'Pas assez de coin sur la carte. Actuellement sur la carte : ' + $card->coin]);
 
 
-        return purchase($request);
+        return purchase($request);  
 
     }
     public function purchase(Request $request)

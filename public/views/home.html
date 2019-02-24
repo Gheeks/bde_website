@@ -101,7 +101,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <h2>Scan réussi ({{card.id}}) </h2>
+                <h2>Scan réussi ({{ card.id_string }}) </h2>
                 <ul>
                     <li ng-repeat="product in products" ng-show="product.quantity > 0">
                         <b>{{ product.quantity }}</b>x {{ product.name }}
