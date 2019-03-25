@@ -1,0 +1,52 @@
+<div class="container">
+    <div class="page-header">
+        <h1 class="page-title">Gestion des cartes</h1>
+        <p class="page-description">Pour gérer les cartes membres</p>
+
+        <br/>
+        <button class="btn btn-primary" ng-click="showCardModal()">Remplir une carte membre</button>
+        
+    </div>
+</div>
+
+<div class="modal fade" id="cardModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <form class="modal-content" ng-submit="cardSubmit()">
+            <div class="modal-header">
+                <h5 class="modal-title">Remplir une carte</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="card_user_lastname">Nom du membre</label>
+                    <input type="text" class="form-control" id="card_user_lastname" placeholder="Nom du membre" ng-model="card_user_lastname" required>
+                    <label for="card_user_firstname">Prénom du membre</label>
+                    <input type="text" class="form-control" id="card_user_firstname" placeholder="Prénom du membre" ng-model="card_user_firstname" required>
+                    <label for="card_user_mail">Mail du membre</label>
+                    <input type="text" class="form-control" id="card_user_mail" placeholder="Mail du membre" ng-model="card_user_mail" required>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary">Valider</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="modal fade" id="cardScanModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <form class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Scannez la carte</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>En attente....</p>
+            </div>
+        </form>
+    </div>
+ </div>

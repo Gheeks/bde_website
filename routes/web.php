@@ -32,6 +32,8 @@ Route::prefix('api')->namespace('API')->group(function()
     Route::get('/users/scan', 'UsersController@scan');
     Route::post('/users/addCoin', 'UsersController@addCoin');
 
+    Route::post('/card/create', 'CardController@create');
+
     Route::get('/users/test', function(){
         $ls = [];
         exec('python ../RFID/lecture.py', $ls);
