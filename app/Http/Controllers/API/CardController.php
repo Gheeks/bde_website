@@ -22,6 +22,11 @@ class CardController extends Controller{
         $ar = [];
         $result = exec('python ../RFID/lecture.py', $ar);
 
+        $card = Card::where('id_string', '=', $result)->first();
+        if($card)
+            return response(['success' => false, 'message' => "Carte déjà utilisée"]);
+
+
         $lastname = $request->get('lastname');
         $firstname = $request->get('firstname');
         $mail = $request->get('mail');
